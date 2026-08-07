@@ -4,6 +4,7 @@ import json
 import re
 from typing import Optional
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
@@ -176,13 +177,99 @@ def _parse_feedback(reply: str) -> tuple[str, Optional[dict]]:
             "verdict": "COMPLETED"
         }
 
-@app.get("/")
+@app.get("/", response_class=HTMLResponse)
 async def root():
-    return {
-        "status": "ok",
-        "message": "ABTalks AI Cohort Interviewer API (Groq Engine) is active",
-        "model": GROQ_MODEL
-    }
+    breeth_status = "ACTIVE 🧠" if BREETH_API_KEY else "CONFIGURED 🧠"
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABTalks AI Cohort - Interviewer Engine Backend</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {{ margin: 0; padding: 0; box-sizing: border-box; }}
+    body {{
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top, #1e1b4b 0%, #0f172a 60%, #020617 100%);
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1.5rem;
+    }}
+    .container {{ max-width: 900px; width: 100%; }}
+    .header {{ text-align: center; margin-bottom: 2.5rem; }}
+    .title {{
+      font-size: 2.5rem; font-weight: 800;
+      background: linear-gradient(90deg, #818cf8, #38bdf8, #34d399);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }}
+    .subtitle {{ color: #94a3b8; font-size: 1.05rem; }}
+    .grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }}
+    .card {{
+      background: rgba(30, 41, 59, 0.6);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px; padding: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }}
+    .card-title {{ font-size: 0.85rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.05em; font-weight: 700; margin-bottom: 0.5rem; }}
+    .card-value {{ font-size: 1.2rem; font-weight: 800; color: #34d399; }}
+    .btn-group {{ display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; justify-content: center; }}
+    .btn {{
+      padding: 0.85rem 1.75rem; border-radius: 14px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: all 0.2s ease;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }}
+    .btn-primary {{ background: linear-gradient(135deg, #6366f1, #10b981); color: #fff; box-shadow: 0 4px 14px rgba(16,185,129,0.3); }}
+    .btn-secondary {{ background: rgba(255,255,255,0.08); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.15); }}
+    .btn:hover {{ transform: translateY(-2px); opacity: 0.95; }}
+    .footer {{ margin-top: 3rem; text-align: center; color: #64748b; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; }}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="title">⚡ ABTalks AI Technical Interviewer API</div>
+      <div class="subtitle">Enterprise Backend Engine • Groq Llama-3.3-70B • Breeth AI Memory</div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">Engine Status</div>
+        <div class="card-value">🟢 200 OK (ACTIVE)</div>
+      </div>
+      <div class="card">
+        <div class="card-title">LLM Provider</div>
+        <div class="card-value" style="color: #60a5fa;">Groq Llama-3.3-70B</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Agent Memory</div>
+        <div class="card-value" style="color: #a78bfa;">{breeth_status}</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom: 2rem;">
+      <div class="card-title">API Endpoints Overview</div>
+      <p style="color: #cbd5e1; line-height: 1.7; margin-top: 0.5rem; font-size: 0.95rem;">
+        This server powers the multi-turn adaptive technical interviewer for candidates of the 31-day ABTalks Enterprise AI Cohort.
+      </p>
+      <div class="btn-group">
+        <a href="/docs" class="btn btn-primary" target="_blank">📘 Open Swagger API Docs</a>
+        <a href="/api/candidates" class="btn btn-secondary" target="_blank">👥 View Candidates API</a>
+        <a href="/api/curriculum" class="btn btn-secondary" target="_blank">📚 View Curriculum API</a>
+        <a href="https://aiagent-12.netlify.app" class="btn btn-secondary" target="_blank" style="border-color: #34d399; color: #34d399;">🌐 Open Frontend App</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      ABTalks AI Cohort Hackathon • Render Cloud Hosted Engine
+    </div>
+  </div>
+</body>
+</html>"""
 
 @app.get("/api/candidates")
 async def get_candidates():
