@@ -11,53 +11,65 @@ const APP_STYLES = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: '2.5rem 1rem',
+    padding: '2rem 1.5rem',
+    width: '100%',
   },
   header: {
     textAlign: 'center',
     marginBottom: '2.5rem',
+    maxWidth: '1000px',
   },
   title: {
-    fontSize: '2.75rem',
+    fontSize: '3.25rem',
     fontWeight: 800,
     background: 'linear-gradient(90deg, #818cf8, #38bdf8, #34d399)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     margin: 0,
-    letterSpacing: '-0.02em',
+    letterSpacing: '-0.03em',
+    lineHeight: 1.15,
   },
   subtitle: {
     color: '#94a3b8',
-    fontSize: '1.05rem',
-    marginTop: '0.6rem',
+    fontSize: '1.2rem',
+    marginTop: '0.8rem',
+    fontWeight: 500,
   },
   candidateSelect: {
     display: 'flex',
-    gap: '1.25rem',
+    gap: '1.5rem',
     marginBottom: '2.5rem',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    width: '100%',
+    maxWidth: '1300px',
   },
   candidateBtn: (isSelected) => ({
-    padding: '1rem 1.75rem',
-    borderRadius: '16px',
+    padding: '1.25rem 2rem',
+    borderRadius: '20px',
     border: isSelected
       ? '2px solid #818cf8'
-      : '1px solid rgba(255, 255, 255, 0.1)',
+      : '1px solid rgba(255, 255, 255, 0.12)',
     background: isSelected
-      ? 'rgba(129, 140, 248, 0.2)'
-      : 'rgba(30, 41, 59, 0.5)',
+      ? 'rgba(129, 140, 248, 0.22)'
+      : 'rgba(30, 41, 59, 0.65)',
     color: isSelected ? '#818cf8' : '#cbd5e1',
     cursor: 'pointer',
     fontWeight: 600,
-    fontSize: '0.95rem',
-    backdropFilter: 'blur(10px)',
+    fontSize: '1.05rem',
+    backdropFilter: 'blur(16px)',
     textAlign: 'left',
-    minWidth: '220px',
+    minWidth: '280px',
+    flex: '1 1 280px',
+    maxWidth: '400px',
+    boxShadow: isSelected
+      ? '0 10px 30px rgba(129, 140, 248, 0.25)'
+      : '0 8px 24px rgba(0, 0, 0, 0.2)',
+    transition: 'all 0.25s ease',
   }),
   mainContent: {
     width: '100%',
-    maxWidth: '850px',
+    maxWidth: '1350px',
   },
 };
 
