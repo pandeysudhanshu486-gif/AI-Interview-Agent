@@ -89,9 +89,9 @@ function App() {
       .catch(() => {
         // Fallback default candidates if API fails initial call
         setCandidates([
-          { id: 1, name: 'Sudhanshu Pandey', role: 'AI Engineering Candidate' },
+          { id: 1, name: 'Sudhanshu Pandey', role: 'Backend / Systems Engineer' },
           { id: 2, name: 'Chesta Sharma', role: 'Frontend / AI Engineer' },
-          { id: 3, name: 'Sudhanshu Prajapati', role: 'Backend / Systems Engineer' },
+          { id: 3, name: 'Sudhanshu Prajapati', role: 'AI Engineering Candidate' },
         ]);
       });
   }, []);
@@ -137,13 +137,13 @@ function App() {
               const isSudhanshuP = c.name === 'Sudhanshu Pandey';
               const isChesta = c.name === 'Chesta Sharma';
               const pct = isSudhanshuP ? 100 : isChesta ? 65 : 75;
-              const exp = isSudhanshuP ? '2 Yrs Exp' : isChesta ? '1 Yr Exp' : '3 Yrs Exp';
+              const exp = isSudhanshuP ? '3 Yrs Exp' : isChesta ? '1 Yr Exp' : '2 Yrs Exp';
               const missions = isSudhanshuP ? '16 / 16 Missions' : isChesta ? '8 / 16 Missions' : '12 / 16 Missions';
               const tags = isSudhanshuP 
-                ? ['RAG Pipelines', 'Vector DBs', 'LangGraph Agents', 'MCP']
+                ? ['Backend Eng', 'System Design', 'Fine-Tuning', 'Docker MLOps']
                 : isChesta 
                 ? ['Prompt Eng', 'React UI', 'MCP SDK', 'FastAPI']
-                : ['Fine-Tuning', 'Docker MLOps', 'System Architecture'];
+                : ['RAG Pipelines', 'Vector DBs', 'LangGraph Agents', 'MCP'];
 
               const initials = c.name.split(' ').map(n => n[0]).join('');
 

@@ -3,14 +3,14 @@
     "id": 1,
     "name": "Sudhanshu Pandey",
     "email": "sudhanshu@example.com",
-    "role": "AI Engineering Candidate",
-    "experience_years": 2,
+    "role": "Backend / Systems Engineer",
+    "experience_years": 3,
     "education": "B.Tech Computer Science & Engineering",
     "completion_percentage": 100,
     "total_attempts": 16,
     "completed_missions": ["Day 1", "Day 2", "Day 3", "Day 5", "Day 7", "Day 8", "Day 10", "Day 12", "Day 14", "Day 16", "Day 18", "Day 20", "Day 22", "Day 25", "Day 28", "Day 31"],
     "skipped_topics": [],
-    "signals": "Strong in RAG Pipelines, Embeddings, and Agent Orchestration. Completed all capstone milestones with high technical rigor."
+    "signals": "Strong in System Design, Backend Engineering, Fine-Tuning, Docker MLOps, and Production Deployment."
   },
   {
     "id": 2,
@@ -29,13 +29,13 @@
     "id": 3,
     "name": "Sudhanshu Prajapati",
     "email": "prajapati@example.com",
-    "role": "Backend / Systems Engineer",
-    "experience_years": 3,
+    "role": "AI Engineering Candidate",
+    "experience_years": 2,
     "education": "M.Tech Computer Science",
     "completion_percentage": 75,
     "total_attempts": 12,
     "completed_missions": ["Day 1", "Day 3", "Day 5", "Day 7", "Day 8", "Day 14", "Day 20", "Day 25"],
     "skipped_topics": ["Day 18 (Multi-Modal)"],
-    "signals": "Excellent grasp of fine-tuning, system design, Docker containerization, and production deployment."
+    "signals": "Excellent grasp of RAG Pipelines, Vector Databases, LangGraph Agents, and MCP Protocol."
   }
 ]
