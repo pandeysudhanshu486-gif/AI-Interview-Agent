@@ -17,8 +17,15 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 
+# Configure Breeth AI (Intent-Aware Agent Memory & MCP Integration)
+BREETH_API_KEY = os.getenv("BREETH_API_KEY")
+BREETH_MCP_URL = os.getenv("BREETH_MCP_URL", "https://mcp.thebreeth.com/mcp")
+
 if not GROQ_API_KEY or GROQ_API_KEY == "your_groq_api_key_here":
     print("⚠️ WARNING: GROQ_API_KEY is not set or using placeholder in .env file")
+
+if BREETH_API_KEY:
+    print("🧠 Breeth AI Intent-Aware Agent Memory & MCP Server is ACTIVE")
 
 # Load data files
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
@@ -36,9 +43,9 @@ curriculum = load_curriculum()
 
 # FastAPI app
 app = FastAPI(
-    title="AI Technical Interviewer - ABTalks AI Cohort (Groq Powered)",
-    description="Multi-turn technical interviewer using Groq API (Llama-3.3-70B).",
-    version="2.1.0",
+    title="AI Technical Interviewer - ABTalks AI Cohort (Groq & Breeth AI Powered)",
+    description="Multi-turn technical interviewer using Groq Llama-3.3-70B with Breeth Intent-Aware Agent Memory.",
+    version="3.0.0",
 )
 
 # CORS middleware

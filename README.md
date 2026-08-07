@@ -32,6 +32,7 @@ This AI Agent simulates a real **FAANG/Top-Tech Senior AI Engineering Interviewe
 
 ## ✨ Key Features
 
+- 🧠 **Breeth AI Intent-Aware Agent Memory**: Powered by Breeth AI (`https://mcp.thebreeth.com/mcp`) for persistent candidate intent memory & Model Context Protocol (MCP) support.
 - 🤖 **Groq Llama-3.3-70B AI Engine**: Powered by Groq's ultra-fast LLM API (`llama-3.3-70b-versatile`).
 - 📊 **Dynamic Turn & Progress Tracking**: Visual header badge (`Question X / 8+`) and progress bar.
 - 🎙️ **Speech-to-Text (Mic Input)**: Web Speech API microphone input (`🎙️`) for candidates to speak their answers.
@@ -46,7 +47,8 @@ This AI Agent simulates a real **FAANG/Top-Tech Senior AI Engineering Interviewe
 | Layer | Technology |
 |---|---|
 | **Backend Framework** | Python 3.9+, FastAPI, Uvicorn, Pydantic, Requests, Python-Dotenv |
-| **AI LLM Provider** | Groq API (`llama-3.3-70b-versatile`) |
+| **AI LLM Engine** | Groq API (`llama-3.3-70b-versatile`) |
+| **Agent Memory & MCP** | Breeth AI Intent-Aware Agent Memory (`mcp.thebreeth.com/mcp`) |
 | **Frontend UI** | React 18, Vite, Vanilla CSS Glassmorphism |
 | **Browser Web APIs** | Web Speech Recognition & Speech Synthesis APIs |
 | **Deployment Config** | Render (`render.yaml`, `Procfile`), Vercel ready |

@@ -136,7 +136,15 @@ Minimum Requirements:
 
 ---
 
-## 4. 📝 User Customization Prompts Log
+## 4. 🧠 Breeth AI (Intent-Aware Agent Memory & MCP Integration)
+
+- **Platform**: Breeth AI (`https://mcp.thebreeth.com/mcp`)
+- **Integration**: Provides persistent intent-aware memory across interview candidate turns and Model Context Protocol (MCP) tool integration.
+- **Config**: `BREETH_API_KEY` configured in `.env` and Render deployment spec.
+
+---
+
+## 5. 📝 User Customization Prompts Log
 
 1. **Architecture Setup**:
    > "ye mera folder ka architecture hai to aap mujhe issi trh bna kr de do folder me completly"

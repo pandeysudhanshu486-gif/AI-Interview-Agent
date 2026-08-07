@@ -11,3 +11,7 @@ services:
         sync: false
       - key: GROQ_MODEL
         value: llama-3.3-70b-versatile
+      - key: BREETH_API_KEY
+        sync: false
+      - key: BREETH_MCP_URL
+        value: https://mcp.thebreeth.com/mcp
