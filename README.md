@@ -9,6 +9,15 @@ An autonomous, multi-turn **AI Technical Interviewer Agent** designed to conduct
 
 ---
 
+## 🏆 Hackathon Submission Metadata (Verification Links)
+
+- **Public Repository URL**: [`https://github.com/pandeysudhanshu486-gif/AI-Interview-Agent.git`](https://github.com/pandeysudhanshu486-gif/AI-Interview-Agent.git)
+- **Live Demo URL (Frontend)**: [`https://aiagent-12.netlify.app`](https://aiagent-12.netlify.app)
+- **Live API URL (Backend)**: [`https://ai-interview-agent-e74h.onrender.com`](https://ai-interview-agent-e74h.onrender.com)
+- **AI Usage Log & Prompt History**: [`PROMPTS.md`](file:///Users/sudhanshupandey/Desktop/AI-Interview-Agent/PROMPTS.md)
+
+---
+
 ## 🎯 Problem Statement & Mission
 
 The **ABTalks AI Cohort** is an intensive 31-day program covering modern AI engineering topics such as RAG, Vector Databases, Prompt Engineering, Agentic AI, MCP, Fine-Tuning, and MLOps.
