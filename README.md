@@ -163,11 +163,17 @@ Main interview conversation endpoint. Accepts candidate ID and conversation hist
 }
 ```
 
-#### `GET /api/candidates`
-Returns candidate profiles.
+### 🔌 Key API Endpoints
 
-#### `GET /api/curriculum`
-Returns cohort curriculum modules and topics.
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/` | Live Glassmorphic API Dashboard & System Status |
+| `GET` | `/docs` | Interactive Swagger API Sandbox Documentation |
+| `GET` | `/api/candidates` | Get list of candidate profiles (with completion %, signals & missions) |
+| `GET` | `/api/candidates/{id}` | Get detailed profile for a specific candidate by ID |
+| `GET` | `/api/curriculum` | Get full 31-day AI Cohort syllabus, learning objectives & tools |
+| `GET` | `/api/curriculum/day/{day}` | Get specific topic, objectives, and tools for a curriculum day |
+| `POST` | `/api/interview` | Main AI Interview engine turn processing & evaluation JSON generation |
 
 ---
 
