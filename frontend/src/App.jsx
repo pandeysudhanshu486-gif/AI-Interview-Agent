@@ -137,7 +137,7 @@ function App() {
               const isSudhanshuP = c.name === 'Sudhanshu Pandey';
               const isChesta = c.name === 'Chesta Sharma';
               const pct = isSudhanshuP ? 100 : isChesta ? 65 : 75;
-              const exp = isSudhanshuP ? '3 Yrs Exp' : isChesta ? '1 Yr Exp' : '2 Yrs Exp';
+              const exp = isSudhanshuP ? '3 Yrs Exp' : isChesta ? '2 Yrs Exp' : '2 Yrs Exp';
               const missions = isSudhanshuP ? '16 / 16 Missions' : isChesta ? '8 / 16 Missions' : '12 / 16 Missions';
               const tags = isSudhanshuP 
                 ? ['Backend Eng', 'System Design', 'Fine-Tuning', 'Docker MLOps']
