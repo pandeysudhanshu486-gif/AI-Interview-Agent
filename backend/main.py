@@ -275,9 +275,32 @@ async def root():
 async def get_candidates():
     return load_candidates()
 
+@app.get("/api/candidates/{candidate_id}")
+async def get_candidate_by_id(candidate_id: int):
+    candidates_list = load_candidates()
+    for c in candidates_list:
+        if c["id"] == candidate_id:
+            return c
+    raise HTTPException(status_code=404, detail=f"Candidate with ID {candidate_id} not found")
+
 @app.get("/api/curriculum")
 async def get_curriculum():
     return load_curriculum()
+
+@app.get("/api/curriculum/day/{day_number}")
+async def get_curriculum_by_day(day_number: int):
+    data = load_curriculum()
+    for m in data.get("modules", []):
+        for t in m.get("topics", []):
+            if t.get("day") == day_number:
+                return {
+                    "module": m.get("name"),
+                    "day": t.get("day"),
+                    "topic": t.get("topic"),
+                    "objectives": t.get("objectives"),
+                    "tools": t.get("tools")
+                }
+    raise HTTPException(status_code=404, detail=f"Curriculum Day {day_number} topic not found")
 
 @app.post("/api/interview", response_model=InterviewResponse)
 async def conduct_interview(request: InterviewRequest):

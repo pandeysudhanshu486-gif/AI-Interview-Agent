@@ -1,21 +1,156 @@
 {
   "cohort": "ABTalks 31-Day Enterprise AI Engineering",
-  "days": [
-    { "day": 1, "topic": "AI Landscape & LLM Foundations", "category": "Foundations" },
-    { "day": 2, "topic": "Prompt Engineering & Few-Shot Learning", "category": "Prompt Engineering" },
-    { "day": 3, "topic": "Embeddings & Semantic Search", "category": "Embeddings" },
-    { "day": 5, "topic": "Vector Databases (Pinecone, ChromaDB)", "category": "Vector Databases" },
-    { "day": 7, "topic": "RAG Pipeline Architecture", "category": "RAG Pipelines" },
-    { "day": 8, "topic": "Advanced RAG: Reranking & Hybrid Search", "category": "RAG Pipelines" },
-    { "day": 10, "topic": "LangChain Fundamentals", "category": "LangChain" },
-    { "day": 12, "topic": "AI Agents & Tool Use", "category": "Agents" },
-    { "day": 14, "topic": "LangGraph & Multi-Agent Orchestration", "category": "LangGraph" },
-    { "day": 16, "topic": "Model Context Protocol (MCP)", "category": "MCP" },
-    { "day": 18, "topic": "Multi-Modal AI (Vision + Audio)", "category": "Multi-Modal" },
-    { "day": 20, "topic": "Fine-tuning LLMs (PEFT, LoRA)", "category": "Fine-tuning" },
-    { "day": 22, "topic": "Evaluation, Guardrails & Safety", "category": "Evaluation" },
-    { "day": 25, "topic": "Production Deployment & MLOps", "category": "Deployment" },
-    { "day": 28, "topic": "Capstone Project Architecture", "category": "Capstone" },
-    { "day": 31, "topic": "Final Demo & Presentation", "category": "Capstone" }
+  "total_days": 31,
+  "description": "Comprehensive enterprise AI engineering cohort covering LLMs, RAG pipelines, Vector DBs, Prompt Engineering, Autonomous AI Agents, MCP, Fine-Tuning, and Production MLOps.",
+  "modules": [
+    {
+      "module_id": 1,
+      "name": "Foundations & Prompt Engineering",
+      "days_range": "Day 1 - Day 4",
+      "topics": [
+        {
+          "day": 1,
+          "topic": "AI Landscape & LLM Architecture",
+          "objectives": "Understand transformer architecture, self-attention mechanisms, and foundation LLM capabilities.",
+          "tools": ["PyTorch", "Hugging Face", "OpenAI API"]
+        },
+        {
+          "day": 2,
+          "topic": "Advanced Prompt Engineering & Few-Shot Learning",
+          "objectives": "Master Chain-of-Thought, ReAct prompting, zero-shot/few-shot techniques, and structured JSON extraction.",
+          "tools": ["LangChain Prompts", "Instructor", "Pydantic"]
+        },
+        {
+          "day": 3,
+          "topic": "Embeddings & Semantic Vector Spaces",
+          "objectives": "Generate dense vector embeddings, measure cosine similarity, distance metrics, and dimensionality reduction.",
+          "tools": ["OpenAI text-embedding-3", "SentenceTransformers", "NumPy"]
+        },
+        {
+          "day": 4,
+          "topic": "Tokenization & Context Window Optimization",
+          "objectives": "Manage BPE tokenization, tiktoken counting, context truncation, and cost optimization.",
+          "tools": ["tiktoken", "LangChain TokenSplitter"]
+        }
+      ]
+    },
+    {
+      "module_id": 2,
+      "name": "Vector Databases & RAG Pipelines",
+      "days_range": "Day 5 - Day 9",
+      "topics": [
+        {
+          "day": 5,
+          "topic": "Vector Database Architecture (Pinecone & ChromaDB)",
+          "objectives": "Index high-dimensional vectors, set up namespaces, HNSW indexing, and payload metadata filtering.",
+          "tools": ["Pinecone", "ChromaDB", "Qdrant"]
+        },
+        {
+          "day": 6,
+          "topic": "Chunking Strategies & Document Ingestion",
+          "objectives": "Implement semantic chunking, recursive text splitting, multi-modal PDF parsing, and metadata enrichment.",
+          "tools": ["Unstructured", "PyPDF", "LangChain TextSplitters"]
+        },
+        {
+          "day": 7,
+          "topic": "RAG Pipeline Architecture",
+          "objectives": "Build end-to-end RAG architecture with dense retrieval, context synthesis, and source attribution.",
+          "tools": ["LangChain RAG", "LlamaIndex", "FastAPI"]
+        },
+        {
+          "day": 8,
+          "topic": "Advanced RAG: Hybrid Search & Cohere Reranking",
+          "objectives": "Combine BM25 sparse keyword search with dense vector search; apply Cohere rerankers to improve precision.",
+          "tools": ["Cohere Rerank", "BM25Encoder", "Pinecone Hybrid"]
+        },
+        {
+          "day": 9,
+          "topic": "Query Transformation & Self-Querying RAG",
+          "objectives": "Implement HyDE (Hypothetical Document Embeddings), query rewriting, multi-query expansion, and sub-question breakdown.",
+          "tools": ["LlamaIndex QueryEngine", "LangChain SelfQuery"]
+        }
+      ]
+    },
+    {
+      "module_id": 3,
+      "name": "Agentic AI & Model Context Protocol (MCP)",
+      "days_range": "Day 10 - Day 17",
+      "topics": [
+        {
+          "day": 10,
+          "topic": "LangChain Agent Framework",
+          "objectives": "Build tool-calling agents with Custom Tools, Memory, and execution loop error handling.",
+          "tools": ["LangChain Tools", "DuckDuckGo API", "PythonREPL"]
+        },
+        {
+          "day": 12,
+          "topic": "Autonomous AI Agents & Tool Execution Loops",
+          "objectives": "Design Plan-and-Solve agents, AutoGPT-style execution loops, and human-in-the-loop approvals.",
+          "tools": ["CrewAI", "LangChain Agents"]
+        },
+        {
+          "day": 14,
+          "topic": "LangGraph Multi-Agent Orchestration",
+          "objectives": "Construct stateful multi-agent graphs with state nodes, conditional routing edges, and checkpointing.",
+          "tools": ["LangGraph", "StateGraph", "AsyncIO"]
+        },
+        {
+          "day": 16,
+          "topic": "Model Context Protocol (MCP) Standards",
+          "objectives": "Implement standardized MCP Client/Server interfaces for connecting LLMs to external databases and agent tools.",
+          "tools": ["MCP SDK", "Breeth AI MCP Server", "FastAPI MCP"]
+        }
+      ]
+    },
+    {
+      "module_id": 4,
+      "name": "Multi-Modal AI, Fine-Tuning & MLOps",
+      "days_range": "Day 18 - Day 31",
+      "topics": [
+        {
+          "day": 18,
+          "topic": "Multi-Modal AI (Vision, Audio & Document Intelligence)",
+          "objectives": "Process vision-language models for chart/diagram analysis and Whisper audio transcription.",
+          "tools": ["GPT-4o Vision", "Whisper API", "PIL/Pillow"]
+        },
+        {
+          "day": 20,
+          "topic": "LLM Fine-Tuning (PEFT, LoRA & QLoRA)",
+          "objectives": "Prepare instruction datasets, train LoRA adapters, quantization, and evaluate loss curves.",
+          "tools": ["HuggingFace PEFT", "TRL SFTTrainer", "BitsAndBytes"]
+        },
+        {
+          "day": 22,
+          "topic": "AI Evaluation, Guardrails & Security",
+          "objectives": "Set up Ragas RAG evaluation metrics (Faithfulness, Answer Relevance) and NeMo Guardrails against prompt injection.",
+          "tools": ["Ragas", "NeMo Guardrails", "TruLens"]
+        },
+        {
+          "day": 25,
+          "topic": "Production AI Deployment & MLOps Pipeline",
+          "objectives": "Containerize FastAPI backend services with Docker, set up CI/CD pipelines, and cloud hosting.",
+          "tools": ["Docker", "FastAPI", "Uvicorn", "Render", "Vercel"]
+        },
+        {
+          "day": 28,
+          "topic": "Capstone Architecture & System Design",
+          "objectives": "Architect scalable enterprise multi-agent RAG system with failover, monitoring, and telemetry.",
+          "tools": ["LangSmith", "Prometheus", "OpenTelemetry"]
+        },
+        {
+          "day": 31,
+          "topic": "Capstone Live Demo & Final Presentation",
+          "objectives": "Present technical system architecture, code walkthrough, and live technical defense.",
+          "tools": ["Full Stack Demo", "PDF Scorecards", "Live Steer Ready"]
+        }
+      ]
+    }
+  ],
+  "interview_categories": [
+    "System Design & Architecture",
+    "RAG & Vector Retrieval",
+    "Agentic Control Loops & MCP",
+    "Fine-Tuning & Performance Optimization",
+    "Production MLOps & Security"
   ]
 }
