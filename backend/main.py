@@ -42,11 +42,40 @@ def load_curriculum():
 candidates = load_candidates()
 curriculum = load_curriculum()
 
-# FastAPI app
+# FastAPI app with Swagger UI metadata & tags
+tags_metadata = [
+    {
+        "name": "System & Dashboard",
+        "description": "System status, health checks, and interactive engine dashboards."
+    },
+    {
+        "name": "Candidate Profiles",
+        "description": "Access candidate profiles, completed missions, skipped topics, and evaluation signals."
+    },
+    {
+        "name": "31-Day Curriculum",
+        "description": "Explore the 31-day enterprise AI cohort syllabus, daily topics, learning objectives, and tools."
+    },
+    {
+        "name": "AI Interview Engine",
+        "description": "Execute multi-turn adaptive technical interviews powered by Groq Llama-3.3-70B & Breeth Memory."
+    }
+]
+
 app = FastAPI(
-    title="AI Technical Interviewer - ABTalks AI Cohort (Groq & Breeth AI Powered)",
-    description="Multi-turn technical interviewer using Groq Llama-3.3-70B with Breeth Intent-Aware Agent Memory.",
-    version="3.0.0",
+    title="⚡ ABTalks AI Technical Interviewer Engine",
+    description="""
+## 🤖 Enterprise AI Cohort Technical Interviewer API
+Powered by **Groq Llama-3.3-70B** & **Breeth AI Intent-Aware Memory Layer** (`mcp.thebreeth.com/mcp`).
+
+- 👥 **Candidates API**: Retrieve student profiles, completed missions, and attempts.
+- 📚 **Curriculum API**: Access 31-day syllabus, learning objectives, and tools.
+- 💬 **Interview Engine**: Conduct realistic multi-turn technical interviews & generate JSON scorecards.
+""",
+    version="3.5.0",
+    openapi_tags=tags_metadata,
+    docs_url="/docs",
+    redoc_url="/redoc"
 )
 
 # CORS middleware
@@ -177,7 +206,7 @@ def _parse_feedback(reply: str) -> tuple[str, Optional[dict]]:
             "verdict": "COMPLETED"
         }
 
-@app.get("/", response_class=HTMLResponse)
+@app.get("/", response_class=HTMLResponse, tags=["System & Dashboard"], summary="Engine Dashboard & Health Overview")
 async def root():
     breeth_status = "ACTIVE 🧠" if BREETH_API_KEY else "CONFIGURED 🧠"
     return f"""<!DOCTYPE html>
@@ -252,12 +281,13 @@ async def root():
     </div>
 
     <div class="card" style="margin-bottom: 2rem;">
-      <div class="card-title">API Endpoints Overview</div>
+      <div class="card-title">Interactive API Documentation & Controls</div>
       <p style="color: #cbd5e1; line-height: 1.7; margin-top: 0.5rem; font-size: 0.95rem;">
-        This server powers the multi-turn adaptive technical interviewer for candidates of the 31-day ABTalks Enterprise AI Cohort.
+        This server powers the multi-turn adaptive technical interviewer for candidates of the 31-day ABTalks Enterprise AI Cohort. Click below to test Swagger UI docs & data APIs.
       </p>
       <div class="btn-group">
         <a href="/docs" class="btn btn-primary" target="_blank">📘 Open Swagger API Docs</a>
+        <a href="/redoc" class="btn btn-secondary" target="_blank">📙 Open ReDoc Documentation</a>
         <a href="/api/candidates" class="btn btn-secondary" target="_blank">👥 View Candidates API</a>
         <a href="/api/curriculum" class="btn btn-secondary" target="_blank">📚 View Curriculum API</a>
         <a href="https://aiagent-12.netlify.app" class="btn btn-secondary" target="_blank" style="border-color: #34d399; color: #34d399;">🌐 Open Frontend App</a>
@@ -271,11 +301,11 @@ async def root():
 </body>
 </html>"""
 
-@app.get("/api/candidates")
+@app.get("/api/candidates", tags=["Candidate Profiles"], summary="Get All Candidate Profiles")
 async def get_candidates():
     return load_candidates()
 
-@app.get("/api/candidates/{candidate_id}")
+@app.get("/api/candidates/{candidate_id}", tags=["Candidate Profiles"], summary="Get Candidate Profile by ID")
 async def get_candidate_by_id(candidate_id: int):
     candidates_list = load_candidates()
     for c in candidates_list:
@@ -283,11 +313,11 @@ async def get_candidate_by_id(candidate_id: int):
             return c
     raise HTTPException(status_code=404, detail=f"Candidate with ID {candidate_id} not found")
 
-@app.get("/api/curriculum")
+@app.get("/api/curriculum", tags=["31-Day Curriculum"], summary="Get Full 31-Day Syllabus")
 async def get_curriculum():
     return load_curriculum()
 
-@app.get("/api/curriculum/day/{day_number}")
+@app.get("/api/curriculum/day/{day_number}", tags=["31-Day Curriculum"], summary="Get Specific Curriculum Day Details")
 async def get_curriculum_by_day(day_number: int):
     data = load_curriculum()
     for m in data.get("modules", []):
@@ -302,7 +332,7 @@ async def get_curriculum_by_day(day_number: int):
                 }
     raise HTTPException(status_code=404, detail=f"Curriculum Day {day_number} topic not found")
 
-@app.post("/api/interview", response_model=InterviewResponse)
+@app.post("/api/interview", response_model=InterviewResponse, tags=["AI Interview Engine"], summary="Process AI Interview Turn & Generate Scorecard")
 async def conduct_interview(request: InterviewRequest):
     if not GROQ_API_KEY or GROQ_API_KEY == "your_groq_api_key_here":
         raise HTTPException(
