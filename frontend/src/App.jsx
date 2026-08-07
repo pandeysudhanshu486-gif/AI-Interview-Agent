@@ -68,7 +68,8 @@ function App() {
   const [interviewComplete, setInterviewComplete] = useState(false);
 
   useEffect(() => {
-    fetch('/api/candidates')
+    const API_BASE = import.meta.env.VITE_API_URL || 'https://ai-interview-agent-e74h.onrender.com';
+    fetch(`${API_BASE}/api/candidates`)
       .then((res) => res.json())
       .then((data) => {
         setCandidates(data);

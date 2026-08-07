@@ -242,8 +242,8 @@ function ChatWindow({ candidate, onComplete }) {
         role: m.role,
         content: m.content,
       }));
-
-      const response = await fetch('/api/interview', {
+      const API_BASE = import.meta.env.VITE_API_URL || 'https://ai-interview-agent-e74h.onrender.com';
+      const response = await fetch(`${API_BASE}/api/interview`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
