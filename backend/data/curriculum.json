@@ -1,0 +1,21 @@
+{
+  "cohort": "ABTalks 31-Day Enterprise AI Engineering",
+  "days": [
+    { "day": 1, "topic": "AI Landscape & LLM Foundations", "category": "Foundations" },
+    { "day": 2, "topic": "Prompt Engineering & Few-Shot Learning", "category": "Prompt Engineering" },
+    { "day": 3, "topic": "Embeddings & Semantic Search", "category": "Embeddings" },
+    { "day": 5, "topic": "Vector Databases (Pinecone, ChromaDB)", "category": "Vector Databases" },
+    { "day": 7, "topic": "RAG Pipeline Architecture", "category": "RAG Pipelines" },
+    { "day": 8, "topic": "Advanced RAG: Reranking & Hybrid Search", "category": "RAG Pipelines" },
+    { "day": 10, "topic": "LangChain Fundamentals", "category": "LangChain" },
+    { "day": 12, "topic": "AI Agents & Tool Use", "category": "Agents" },
+    { "day": 14, "topic": "LangGraph & Multi-Agent Orchestration", "category": "LangGraph" },
+    { "day": 16, "topic": "Model Context Protocol (MCP)", "category": "MCP" },
+    { "day": 18, "topic": "Multi-Modal AI (Vision + Audio)", "category": "Multi-Modal" },
+    { "day": 20, "topic": "Fine-tuning LLMs (PEFT, LoRA)", "category": "Fine-tuning" },
+    { "day": 22, "topic": "Evaluation, Guardrails & Safety", "category": "Evaluation" },
+    { "day": 25, "topic": "Production Deployment & MLOps", "category": "Deployment" },
+    { "day": 28, "topic": "Capstone Project Architecture", "category": "Capstone" },
+    { "day": 31, "topic": "Final Demo & Presentation", "category": "Capstone" }
+  ]
+}

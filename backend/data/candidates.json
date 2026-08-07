@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Sudhanshu Pandey",
+    "email": "sudhanshu@example.com",
+    "role": "AI Engineering Candidate",
+    "experience_years": 2,
+    "completed_missions": ["Day 1", "Day 2", "Day 3", "Day 5", "Day 7", "Day 8", "Day 10", "Day 12", "Day 14", "Day 16", "Day 18", "Day 20", "Day 22", "Day 25", "Day 28", "Day 31"],
+    "skipped_topics": [],
+    "signals": "Strong in RAG Pipelines, Embeddings, and Agent Orchestration. Completed all capstone milestones."
+  },
+  {
+    "id": 2,
+    "name": "Chesta Sharma",
+    "email": "chesta@example.com",
+    "role": "Frontend / AI Engineer",
+    "experience_years": 1,
+    "completed_missions": ["Day 1", "Day 2", "Day 3", "Day 5", "Day 7", "Day 10", "Day 12", "Day 16"],
+    "skipped_topics": ["Day 20 (Fine-tuning)", "Day 25 (MLOps)"],
+    "signals": "Solid on Prompt Engineering and MCP interfaces; needs deeper practice in MLOps and fine-tuning."
+  },
+  {
+    "id": 3,
+    "name": "Sudhanshu Prajapati",
+    "email": "prajapati@example.com",
+    "role": "Backend / Systems Engineer",
+    "experience_years": 3,
+    "completed_missions": ["Day 1", "Day 3", "Day 5", "Day 7", "Day 8", "Day 14", "Day 20", "Day 25"],
+    "skipped_topics": ["Day 18 (Multi-Modal)"],
+    "signals": "Excellent grasp of fine-tuning, system design, and production deployment."
+  }
+]
