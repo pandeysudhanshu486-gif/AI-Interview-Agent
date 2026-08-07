@@ -116,40 +116,174 @@ function App() {
         </p>
       </header>
 
-      {!selectedCandidate && (
-        <div>
-          <h3 style={{ textAlign: 'center', color: '#94a3b8', marginBottom: '1.25rem' }}>
-            Select Candidate Profile to Begin Interview:
-          </h3>
-          <div style={APP_STYLES.candidateSelect}>
-            {candidates.map((c) => (
-              <button
-                key={c.id}
-                style={APP_STYLES.candidateBtn(false)}
-                onClick={() => setSelectedCandidate(c)}
-              >
-                <div style={{ fontWeight: 700, color: '#f8fafc' }}>{c.name}</div>
-                <div style={{ fontSize: '0.85rem', color: '#94a3b8', marginTop: '4px' }}>
-                  {c.role}
+      {!selectedCandidate ? (
+        <div style={{ width: '100%', maxWidth: '1350px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+            <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#f8fafc', margin: 0 }}>
+              Select Candidate Profile to Begin Technical Interview
+            </h2>
+            <p style={{ color: '#94a3b8', fontSize: '1rem', marginTop: '0.5rem' }}>
+              Each candidate has a unique 31-day cohort trajectory, completed missions, and performance signals.
+            </p>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+            gap: '2rem',
+            width: '100%',
+          }}>
+            {candidates.map((c) => {
+              const isSudhanshuP = c.name === 'Sudhanshu Pandey';
+              const isChesta = c.name === 'Chesta Sharma';
+              const pct = isSudhanshuP ? 100 : isChesta ? 65 : 75;
+              const exp = isSudhanshuP ? '2 Yrs Exp' : isChesta ? '1 Yr Exp' : '3 Yrs Exp';
+              const missions = isSudhanshuP ? '16 / 16 Missions' : isChesta ? '8 / 16 Missions' : '12 / 16 Missions';
+              const tags = isSudhanshuP 
+                ? ['RAG Pipelines', 'Vector DBs', 'LangGraph Agents', 'MCP']
+                : isChesta 
+                ? ['Prompt Eng', 'React UI', 'MCP SDK', 'FastAPI']
+                : ['Fine-Tuning', 'Docker MLOps', 'System Architecture'];
+
+              const initials = c.name.split(' ').map(n => n[0]).join('');
+
+              return (
+                <div
+                  key={c.id}
+                  onClick={() => setSelectedCandidate(c)}
+                  style={{
+                    background: 'rgba(30, 41, 59, 0.65)',
+                    backdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    borderRadius: '24px',
+                    padding: '2rem',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    boxShadow: '0 15px 35px rgba(0, 0, 0, 0.3)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-6px)';
+                    e.currentTarget.style.borderColor = '#818cf8';
+                    e.currentTarget.style.boxShadow = '0 20px 40px rgba(129, 140, 248, 0.25)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
+                    e.currentTarget.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.3)';
+                  }}
+                >
+                  <div>
+                    {/* Header with Avatar & Badge */}
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
+                      <div style={{
+                        width: '56px',
+                        height: '56px',
+                        borderRadius: '16px',
+                        background: 'linear-gradient(135deg, #6366f1, #10b981)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontWeight: 800,
+                        fontSize: '1.25rem',
+                        color: '#ffffff',
+                        boxShadow: '0 8px 20px rgba(99, 102, 241, 0.35)',
+                      }}>
+                        {initials}
+                      </div>
+                      <span style={{
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        border: '1px solid rgba(255, 255, 255, 0.12)',
+                        color: '#34d399',
+                        fontSize: '0.85rem',
+                        fontWeight: 700,
+                        padding: '0.4rem 0.9rem',
+                        borderRadius: '9999px',
+                      }}>
+                        {exp}
+                      </span>
+                    </div>
+
+                    {/* Candidate Name & Role */}
+                    <h3 style={{ fontSize: '1.45rem', fontWeight: 800, color: '#f8fafc', margin: 0 }}>
+                      {c.name}
+                    </h3>
+                    <p style={{ color: '#818cf8', fontSize: '0.95rem', fontWeight: 600, marginTop: '0.3rem', marginBottom: '1.25rem' }}>
+                      {c.role}
+                    </p>
+
+                    {/* Completion Progress Bar */}
+                    <div style={{ marginBottom: '1.5rem' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', fontWeight: 700, color: '#94a3b8', marginBottom: '0.5rem' }}>
+                        <span>Cohort Progress</span>
+                        <span style={{ color: '#38bdf8' }}>{pct}% ({missions})</span>
+                      </div>
+                      <div style={{ width: '100%', height: '8px', background: 'rgba(255, 255, 255, 0.08)', borderRadius: '9999px', overflow: 'hidden' }}>
+                        <div style={{ width: `${pct}%`, height: '100%', background: 'linear-gradient(90deg, #6366f1, #38bdf8, #34d399)', borderRadius: '9999px' }} />
+                      </div>
+                    </div>
+
+                    {/* Tech Skill Tags */}
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.75rem' }}>
+                      {tags.map((t, i) => (
+                        <span key={i} style={{
+                          background: 'rgba(15, 23, 42, 0.6)',
+                          border: '1px solid rgba(255, 255, 255, 0.08)',
+                          color: '#cbd5e1',
+                          fontSize: '0.8rem',
+                          padding: '0.35rem 0.75rem',
+                          borderRadius: '8px',
+                          fontWeight: 500,
+                        }}>
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Start Interview Action Button */}
+                  <button style={{
+                    width: '100%',
+                    padding: '1rem',
+                    borderRadius: '14px',
+                    border: 'none',
+                    background: 'linear-gradient(135deg, #6366f1, #4f46e5)',
+                    color: '#ffffff',
+                    fontWeight: 700,
+                    fontSize: '1rem',
+                    cursor: 'pointer',
+                    boxShadow: '0 6px 20px rgba(99, 102, 241, 0.35)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.5rem',
+                  }}>
+                    🚀 Start Technical Interview
+                  </button>
                 </div>
-              </button>
-            ))}
+              );
+            })}
           </div>
         </div>
+      ) : (
+        <div style={APP_STYLES.mainContent}>
+          {!interviewComplete ? (
+            <ChatWindow
+              candidate={selectedCandidate}
+              onInterviewComplete={handleInterviewComplete}
+              onReset={handleReset}
+            />
+          ) : (
+            <FeedbackCard
+              candidate={selectedCandidate}
+              feedback={feedback}
+              onReset={handleReset}
+            />
+          )}
+        </div>
       )}
-
-      <div style={APP_STYLES.mainContent}>
-        {selectedCandidate && !interviewComplete && (
-          <ChatWindow
-            candidate={selectedCandidate}
-            onComplete={handleInterviewComplete}
-          />
-        )}
-
-        {interviewComplete && feedback && (
-          <FeedbackCard feedback={feedback} onReset={handleReset} />
-        )}
-      </div>
     </div>
   );
 }
