@@ -211,7 +211,7 @@ function App() {
                       {c.name}
                     </h3>
                     <p style={{ color: '#818cf8', fontSize: '0.95rem', fontWeight: 600, marginTop: '0.3rem', marginBottom: '1.25rem' }}>
-                      {c.role}
+                      {isSudhanshuP ? 'Backend / Systems Engineer' : isChesta ? 'Frontend / AI Engineer' : 'AI Engineering Candidate'}
                     </p>
 
                     {/* Completion Progress Bar */}
